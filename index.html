@@ -1078,7 +1078,9 @@
 
     .form-grid {
       display: grid;
-      gap: 16px;
+      align-items: start;
+      column-gap: 16px;
+      row-gap: 18px;
       grid-template-columns: 1fr 1fr;
     }
 
@@ -1094,6 +1096,25 @@
     label {
       font-size: 14px;
       font-weight: 800;
+    }
+
+    .field-label-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .field-hint {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .contact-guidance {
+      border-left: 2px solid var(--accent);
+      padding-left: 11px;
     }
 
     input,
@@ -1777,10 +1798,18 @@
                 <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
               </div>
               <div class="field">
-                <label for="contact-info">Phone or email</label>
-                <input id="contact-info" name="contact" type="text" autocomplete="email" placeholder="How should we reach you?" required>
+                <label for="phone">Phone number <span class="field-label-note" id="phone-requirement">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="717-555-0123" aria-describedby="contact-guidance">
               </div>
-              <div class="field field-full">
+              <div class="field">
+                <label for="contact-method">Preferred response</label>
+                <select id="contact-method" name="contactMethod" aria-describedby="contact-guidance">
+                  <option value="Email">Email</option>
+                  <option value="Call">Call</option>
+                  <option value="Text">Text</option>
+                </select>
+              </div>
+              <div class="field">
                 <label for="service">What do you need help with?</label>
                 <select id="service" name="service">
                   <option>Not sure — help me choose</option>
@@ -1791,6 +1820,7 @@
                   <option>In-person help availability</option>
                 </select>
               </div>
+              <p class="field-hint contact-guidance field-full" id="contact-guidance">Email replies go to the address used to send this request. A phone number is required for Call or Text.</p>
               <div class="field field-full">
                 <label for="message">What is your computer doing?</label>
                 <textarea id="message" name="message" placeholder="Tell us about the slowdowns, pop-ups, error messages, or other problems you’re seeing." required></textarea>
@@ -1874,14 +1904,29 @@
 
       var form = document.getElementById("support-form");
       var status = document.getElementById("form-status");
+      var contactMethod = document.getElementById("contact-method");
+      var phone = document.getElementById("phone");
+      var phoneRequirement = document.getElementById("phone-requirement");
+
+      function syncPhoneRequirement() {
+        var phoneIsRequired = contactMethod.value === "Call" || contactMethod.value === "Text";
+        phone.required = phoneIsRequired;
+        phone.setAttribute("aria-required", String(phoneIsRequired));
+        phoneRequirement.textContent = phoneIsRequired ? "(required)" : "(optional)";
+      }
+
+      contactMethod.addEventListener("change", syncPhoneRequirement);
+      syncPhoneRequirement();
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         var data = new FormData(form);
         var subject = "Remote PC Support Request — " + data.get("service");
+        var phoneNumber = String(data.get("phone") || "").trim();
         var body =
           "Name: " + data.get("name") + "\n" +
-          "Best phone or email: " + data.get("contact") + "\n" +
+          "Preferred response: " + data.get("contactMethod") + "\n" +
+          "Phone number: " + (phoneNumber || "Not provided") + "\n" +
           "Requested service: " + data.get("service") + "\n\n" +
           "Computer problem:\n" + data.get("message");
         status.classList.add("visible");
