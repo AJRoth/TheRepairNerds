@@ -103,15 +103,32 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/" aria-label="The Repair Nerds home"><span class="brand-mark"><img src="/logo.png" alt=""></span><span class="brand-copy"><span class="brand-name">The Repair Nerds</span><span class="brand-tag">You break it. We fix it.</span></span></a>
-      <nav class="main-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/#services">Pricing</a><a href="/#plans">Care plans</a><a href="/#how-it-works">How it works</a><a href="/#contact">Contact</a></nav>
-      <div class="nav-actions"><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button><a class="button button-primary" href="tel:+17175356525"><span class="nav-phone-label">Call&nbsp;</span>717-535-6525</a></div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <details class="nav-dropdown">
+          <summary>Services <svg class="menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
+          <div class="nav-dropdown-panel">
+            <a href="/computer-tune-up.html"><span>Computer Tune-Up</span><small>Speed, cleanup, updates, and performance</small></a><a href="/virus-malware-removal.html"><span>Virus &amp; Malware Removal</span><small>Threat cleanup and security guidance</small></a><a href="/senior-computer-help.html"><span>Senior Computer Help</span><small>Patient, plain-English assistance</small></a><a href="/printer-email-help.html" aria-current="page"><span>Printer &amp; Email Help</span><small>Everyday device and account support</small></a>
+          </div>
+        </details>
+        <a href="/#plans">Care plans</a><a href="/#how-it-works">How it works</a><a href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <details class="mobile-menu">
+          <summary aria-label="Open navigation menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span class="mobile-menu-label">Menu</span></summary>
+          <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+            <a href="/">Home</a><span class="menu-section-label">Services</span><a class="menu-service-link" href="/computer-tune-up.html">Computer Tune-Up</a><a class="menu-service-link" href="/virus-malware-removal.html">Virus &amp; Malware Removal</a><a class="menu-service-link" href="/senior-computer-help.html">Senior Computer Help</a><a class="menu-service-link" href="/printer-email-help.html" aria-current="page">Printer &amp; Email Help</a><span class="menu-section-label">More</span><a href="/#plans">Care Plans</a><a href="/#how-it-works">How It Works</a><a href="/#contact">Contact</a><a class="menu-call-link" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a>
+          </nav>
+        </details>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button><a class="button button-primary" href="tel:+17175356525"><span class="nav-phone-label">Call&nbsp;</span>717&#8209;535&#8209;6525</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <section class="service-hero">
       <div class="container">
-        <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">Printer &amp; email help</li></ol>
+        <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">Printer &amp; email help</li></ol></nav>
         <div class="hero-grid">
           <div>
             <p class="eyebrow">Remote printer &amp; email support</p>
@@ -213,7 +230,7 @@
     <section class="section section-alt">
       <div class="container cta-shell">
         <div><p class="section-kicker">Printer or email trouble?</p><h2>Tell us what is not working.</h2><p>We will help determine whether Basic Support is the right fit before you pay.</p></div>
-        <div class="hero-actions"><a class="button button-primary" href="tel:+17175356525">Call 717-535-6525</a><a class="button button-secondary" href="/#contact">Contact online</a></div>
+        <div class="hero-actions"><a class="button button-primary" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a><a class="button button-secondary" href="/#contact">Contact online</a></div>
       </div>
     </section>
   </main>

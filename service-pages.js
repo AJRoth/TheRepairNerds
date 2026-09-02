@@ -37,6 +37,61 @@
     });
   }
 
+  var siteMenus = Array.prototype.slice.call(document.querySelectorAll(".nav-dropdown, .mobile-menu"));
+
+  siteMenus.forEach(function (menu) {
+    menu.addEventListener("toggle", function () {
+      if (!menu.open) {
+        return;
+      }
+
+      siteMenus.forEach(function (otherMenu) {
+        if (otherMenu !== menu) {
+          otherMenu.open = false;
+        }
+      });
+
+      if (menu.classList.contains("mobile-menu")) {
+        menu.firstElementChild.setAttribute("aria-label", "Close navigation menu");
+      }
+    });
+
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menu.open = false;
+      });
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    siteMenus.forEach(function (menu) {
+      if (menu.open && !menu.contains(event.target)) {
+        menu.open = false;
+      }
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    siteMenus.forEach(function (menu) {
+      if (menu.open) {
+        menu.open = false;
+        menu.firstElementChild.focus();
+      }
+    });
+  });
+
+  document.querySelectorAll(".mobile-menu").forEach(function (menu) {
+    menu.addEventListener("toggle", function () {
+      if (!menu.open) {
+        menu.firstElementChild.setAttribute("aria-label", "Open navigation menu");
+      }
+    });
+  });
+
   document.querySelectorAll("[data-current-year]").forEach(function (element) {
     element.textContent = String(new Date().getFullYear());
   });
