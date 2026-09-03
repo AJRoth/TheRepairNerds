@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CF8TW6FX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0CF8TW6FX0');
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      var contactMethod = href.indexOf('tel:') === 0 ? 'phone' :
+        href.indexOf('sms:') === 0 ? 'text' :
+        href.indexOf('mailto:') === 0 ? 'email' : '';
+
+      if (contactMethod) {
+        gtag('event', 'contact_click', {
+          contact_method: contactMethod,
+          link_text: (link.textContent || '').trim()
+        });
+      }
+    });
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The Repair Nerds provides patient, secure remote Windows PC support nationwide, with limited on-site service near Manheim and Lancaster County, PA.">
@@ -2368,6 +2393,10 @@
           "Requested service: " + data.get("service") + "\n\n" +
           "Computer problem:\n" + data.get("message");
         status.classList.add("visible");
+        gtag("event", "generate_lead", {
+          contact_method: "support_email_form",
+          requested_service: String(data.get("service") || "")
+        });
         window.location.href =
           "mailto:RemoteSupport@therepairnerds.com?subject=" +
           encodeURIComponent(subject) +

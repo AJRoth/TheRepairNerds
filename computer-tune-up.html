@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CF8TW6FX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0CF8TW6FX0');
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      var contactMethod = href.indexOf('tel:') === 0 ? 'phone' :
+        href.indexOf('sms:') === 0 ? 'text' :
+        href.indexOf('mailto:') === 0 ? 'email' : '';
+
+      if (contactMethod) {
+        gtag('event', 'contact_click', {
+          contact_method: contactMethod,
+          link_text: (link.textContent || '').trim()
+        });
+      }
+    });
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Remote Windows PC tune-up and cleanup for $79.99. The Repair Nerds serves customers nationwide from Manheim, PA, with patient, up-front support.">
