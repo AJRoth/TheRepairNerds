@@ -217,6 +217,7 @@
       --accent-strong: #78bbff;
       --accent-ink: #03172c;
       --success: #79d3a5;
+      --danger: #f0a0a0;
       --shadow: 0 24px 70px rgba(0, 0, 0, .38);
       --header: rgba(0, 0, 0, .84);
       --selection: rgba(74, 163, 255, .28);
@@ -243,6 +244,7 @@
       --accent-strong: #174f89;
       --accent-ink: #fff8f1;
       --success: #277653;
+      --danger: #a33b2e;
       --shadow: 0 24px 70px rgba(95, 62, 43, .12);
       --header: rgba(248, 240, 230, .88);
       --selection: rgba(31, 99, 168, .22);
@@ -711,6 +713,12 @@
     .button-secondary:hover {
       border-color: var(--accent);
       background: var(--surface-2);
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: .62;
+      transform: none;
     }
 
     .button svg {
@@ -1438,10 +1446,19 @@
     }
 
     .contact-form {
+      position: relative;
       display: grid;
       align-content: start;
       gap: 18px;
       padding: clamp(38px, 6vw, 68px);
+    }
+
+    .form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
 
     .form-grid {
@@ -1538,6 +1555,77 @@
 
     .form-status.visible {
       display: block;
+    }
+
+    .form-status.is-pending {
+      color: var(--text);
+    }
+
+    .form-status.is-success {
+      border-color: var(--success);
+      background: color-mix(in srgb, var(--success) 12%, var(--surface));
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 650;
+      line-height: 1.45;
+      padding: 18px 18px 16px;
+    }
+
+    .form-status.is-error {
+      border-color: var(--danger);
+      background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+      color: var(--text);
+    }
+
+    .form-confirmation {
+      display: none;
+      gap: 10px;
+      border: 1px solid var(--success);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--success) 12%, var(--surface));
+      padding: 22px 20px;
+    }
+
+    .form-confirmation-kicker {
+      margin: 0;
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .form-confirmation h3 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 830;
+      letter-spacing: -.05em;
+      line-height: 1.05;
+    }
+
+    .form-confirmation p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .contact-form.is-sent .form-grid,
+    .contact-form.is-sent .form-submit,
+    .contact-form.is-sent .form-note {
+      display: none;
+    }
+
+    .contact-form.is-sent .form-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .contact-form.is-sent .form-confirmation {
+      display: grid;
     }
 
     .site-footer {
@@ -2186,7 +2274,7 @@
           <div class="contact-copy">
             <p class="section-kicker">Get support</p>
             <h2>Ready to get your PC running better?</h2>
-            <p>Send a quick description of the problem. Your email app will open with the details ready to send.</p>
+            <p>Send a quick description of the problem. We’ll get back to you by email, phone, or text—whichever you prefer.</p>
 
             <div class="contact-links">
               <a class="contact-link" href="tel:+17175356525">
@@ -2211,11 +2299,20 @@
             </div>
           </div>
 
-          <form class="contact-form" id="support-form">
+          <form class="contact-form" id="support-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="82736c3c-fae2-402a-844c-0c6801b5fb0f">
+            <input type="hidden" name="subject" value="New support request from therepairnerds.com">
+            <input type="hidden" name="from_name" value="The Repair Nerds Website">
+            <input class="form-honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+
             <div class="form-grid">
               <div class="field">
                 <label for="name">Your name</label>
                 <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="field-label-note" id="email-requirement">(required)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@email.com" required aria-describedby="contact-guidance">
               </div>
               <div class="field">
                 <label for="phone">Phone number <span class="field-label-note" id="phone-requirement">(optional)</span></label>
@@ -2223,15 +2320,15 @@
               </div>
               <div class="field">
                 <label for="contact-method">Preferred response</label>
-                <select id="contact-method" name="contactMethod" aria-describedby="contact-guidance">
+                <select id="contact-method" name="Preferred response" aria-describedby="contact-guidance">
                   <option value="Email">Email</option>
                   <option value="Call">Call</option>
                   <option value="Text">Text</option>
                 </select>
               </div>
-              <div class="field">
+              <div class="field field-full">
                 <label for="service">What do you need help with?</label>
-                <select id="service" name="service">
+                <select id="service" name="Requested service">
                   <option>Not sure — help me choose</option>
                   <option>Basic Support — $39.99</option>
                   <option>Tune-Up &amp; Cleanup — $79.99</option>
@@ -2240,15 +2337,21 @@
                   <option>In-person help availability</option>
                 </select>
               </div>
-              <p class="field-hint contact-guidance field-full" id="contact-guidance">Email replies go to the address used to send this request. A phone number is required for Call or Text.</p>
+              <p class="field-hint contact-guidance field-full" id="contact-guidance">We’ll use the email or phone number you provide, based on how you’d like us to respond. Email is required for an email reply. A phone number is required for Call or Text.</p>
               <div class="field field-full">
                 <label for="message">What is your computer doing?</label>
                 <textarea id="message" name="message" placeholder="Tell us about the slowdowns, pop-ups, error messages, or other problems you’re seeing." required></textarea>
               </div>
             </div>
 
-            <button class="button button-primary" type="submit">Create support email</button>
-            <p class="form-status" id="form-status" role="status">Your email app should open now. If it does not, call or text&nbsp;717&#8209;535&#8209;6525.</p>
+            <button class="button button-primary form-submit" id="form-submit" type="submit">Send support request</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <div class="form-confirmation" id="form-confirmation">
+              <p class="form-confirmation-kicker">Request received</p>
+              <h3>Thanks for reaching out.</h3>
+              <p>We got your message. Someone from The Repair Nerds will contact you shortly.</p>
+              <p>If you need us sooner, call or text&nbsp;717&#8209;535&#8209;6525.</p>
+            </div>
             <p class="form-note">Please do not include passwords, financial details, or other sensitive information.</p>
           </form>
         </div>
@@ -2384,41 +2487,111 @@
 
       var form = document.getElementById("support-form");
       var status = document.getElementById("form-status");
+      var submitButton = document.getElementById("form-submit");
       var contactMethod = document.getElementById("contact-method");
+      var email = document.getElementById("email");
+      var emailRequirement = document.getElementById("email-requirement");
       var phone = document.getElementById("phone");
       var phoneRequirement = document.getElementById("phone-requirement");
+      var idleSubmitLabel = submitButton.textContent;
+      var successStatus =
+        "Thanks for reaching out. We got your request, and someone from The Repair Nerds will contact you shortly.";
+      var errorStatus =
+        "We couldn’t send that just now. Please try again, or call or text 717-535-6525.";
 
-      function syncPhoneRequirement() {
-        var phoneIsRequired = contactMethod.value === "Call" || contactMethod.value === "Text";
-        phone.required = phoneIsRequired;
-        phone.setAttribute("aria-required", String(phoneIsRequired));
-        phoneRequirement.textContent = phoneIsRequired ? "(required)" : "(optional)";
+      function syncContactRequirements() {
+        var wantsCallOrText = contactMethod.value === "Call" || contactMethod.value === "Text";
+        var wantsEmail = contactMethod.value === "Email";
+
+        email.required = wantsEmail;
+        email.setAttribute("aria-required", String(wantsEmail));
+        emailRequirement.textContent = wantsEmail ? "(required)" : "(optional)";
+
+        phone.required = wantsCallOrText;
+        phone.setAttribute("aria-required", String(wantsCallOrText));
+        phoneRequirement.textContent = wantsCallOrText ? "(required)" : "(optional)";
       }
 
-      contactMethod.addEventListener("change", syncPhoneRequirement);
-      syncPhoneRequirement();
+      function setStatus(message, state) {
+        status.textContent = message;
+        status.classList.toggle("visible", Boolean(message));
+        status.classList.toggle("is-pending", state === "pending");
+        status.classList.toggle("is-success", state === "success");
+        status.classList.toggle("is-error", state === "error");
+      }
+
+      function setSubmitting(isSubmitting) {
+        submitButton.disabled = isSubmitting;
+        submitButton.textContent = isSubmitting ? "Sending…" : idleSubmitLabel;
+        Array.prototype.forEach.call(form.elements, function (element) {
+          if (element === submitButton || element.name === "botcheck") {
+            return;
+          }
+          if (element.type === "hidden") {
+            return;
+          }
+          element.disabled = isSubmitting || form.classList.contains("is-sent");
+        });
+      }
+
+      function markSent() {
+        form.classList.add("is-sent");
+        setSubmitting(false);
+        Array.prototype.forEach.call(form.elements, function (element) {
+          if (element.type !== "hidden" && element.name !== "botcheck") {
+            element.disabled = true;
+          }
+        });
+        submitButton.disabled = true;
+      }
+
+      contactMethod.addEventListener("change", syncContactRequirements);
+      syncContactRequirements();
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        if (!form.reportValidity()) {
+          return;
+        }
+
         var data = new FormData(form);
-        var subject = "Remote PC Support Request — " + data.get("service");
-        var phoneNumber = String(data.get("phone") || "").trim();
-        var body =
-          "Name: " + data.get("name") + "\n" +
-          "Preferred response: " + data.get("contactMethod") + "\n" +
-          "Phone number: " + (phoneNumber || "Not provided") + "\n" +
-          "Requested service: " + data.get("service") + "\n\n" +
-          "Computer problem:\n" + data.get("message");
-        status.classList.add("visible");
-        gtag("event", "generate_lead", {
-          contact_method: "support_email_form",
-          requested_service: String(data.get("service") || "")
-        });
-        window.location.href =
-          "mailto:RemoteSupport@therepairnerds.com?subject=" +
-          encodeURIComponent(subject) +
-          "&body=" +
-          encodeURIComponent(body);
+        var payload = JSON.stringify(Object.fromEntries(data.entries()));
+
+        setSubmitting(true);
+        setStatus("Sending your request…", "pending");
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: payload
+        })
+          .then(function (response) {
+            return response.json().then(function (result) {
+              return { ok: response.ok, result: result };
+            });
+          })
+          .then(function (outcome) {
+            if (!outcome.ok || !outcome.result || outcome.result.success === false) {
+              throw new Error((outcome.result && outcome.result.message) || "Submit failed");
+            }
+
+            gtag("event", "generate_lead", {
+              contact_method: "support_request_form",
+              requested_service: String(data.get("Requested service") || "")
+            });
+
+            markSent();
+            setStatus(successStatus, "success");
+          })
+          .catch(function () {
+            form.classList.remove("is-sent");
+            setSubmitting(false);
+            setStatus(errorStatus, "error");
+          });
       });
     }());
   </script>
