@@ -797,6 +797,23 @@ h3 {
   font-size: 12px;
 }
 
+.policy-copy {
+  max-width: 760px;
+}
+
+.policy-copy p,
+.policy-copy li {
+  color: var(--muted);
+}
+
+.policy-copy .text-link {
+  color: var(--accent);
+}
+
+.policy-copy .text-link:hover {
+  color: var(--accent-strong);
+}
+
 @media (max-width: 940px) {
   .main-nav {
     display: none;
