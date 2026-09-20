@@ -1,0 +1,16 @@
+{
+  "name": "The Repair Nerds site",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 8000 --bind 0.0.0.0",
+      "description": "Serves the static site from the repository root at http://localhost:8000. All pages use root-absolute asset paths, so the server must run from the repo root."
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8000
+    }
+  ]
+}
