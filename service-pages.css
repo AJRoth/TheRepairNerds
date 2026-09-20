@@ -791,6 +791,20 @@ h3 {
   font-size: 13px;
 }
 
+.footer-facebook {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-facebook svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
 .legal-note {
   margin-top: 18px;
   color: var(--soft);

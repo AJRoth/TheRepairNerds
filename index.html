@@ -823,6 +823,15 @@
       color: var(--text);
     }
 
+    .service-area-line a {
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    .service-area-line a:hover {
+      color: var(--accent-strong);
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -1682,6 +1691,20 @@
       color: var(--accent);
     }
 
+    .footer-facebook {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-facebook svg {
+      display: block;
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
     .footer-slogan {
       color: var(--text);
       font-weight: 800;
@@ -2055,6 +2078,7 @@
             <span class="menu-section-label">More</span>
             <a href="/#plans">Care Plans</a>
             <a href="/#how-it-works">How It Works</a>
+            <a href="/lancaster/">Lancaster, PA</a>
             <a href="/#contact">Contact</a>
             <a class="menu-call-link" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a>
           </nav>
@@ -2076,7 +2100,7 @@
           <p class="eyebrow">Manheim, PA • Nationwide remote support</p>
           <h1>PC trouble? <span class="accent-text">Skip the shop visit.</span></h1>
           <p class="hero-copy">Get patient, plain-English help for slow computers, pop-ups, Windows problems, software issues, and more. You approve the secure remote connection and stay in control.</p>
-          <p class="service-area-line"><strong>Based in Manheim, Pennsylvania.</strong> Remote Windows PC support is available throughout the United States. Limited on-site help may be available in Manheim and nearby Lancaster County communities, depending on the issue and travel distance.</p>
+          <p class="service-area-line"><strong>Based in Manheim, Pennsylvania.</strong> Remote Windows PC support is available throughout the United States. Limited on-site help may be available in Manheim and nearby Lancaster County communities, depending on the issue and travel distance. <a href="/lancaster/">See Lancaster-area remote support</a>.</p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#services">See services &amp; pricing</a>
@@ -2369,11 +2393,16 @@
       </div>
       <div class="footer-meta">
         <span class="footer-slogan">You break it. We fix it.</span>
+        <a href="/lancaster/">Lancaster-area support</a>
         <a href="/computer-tune-up.html">Computer tune-ups</a>
         <a href="/virus-malware-removal.html">Virus &amp; malware removal</a>
         <a href="/senior-computer-help.html">Senior computer help</a>
         <a href="/printer-email-help.html">Printer &amp; email help</a>
         <a href="/privacy.html">Privacy</a>
+        <a class="footer-facebook" href="https://www.facebook.com/TheRepairNerds/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Repair Nerds on Facebook">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.4V9.84c0-2.38 1.42-3.69 3.6-3.69 1.04 0 2.13.19 2.13.19v2.34h-1.2c-1.18 0-1.55.74-1.55 1.49v1.79h2.64l-.42 2.91h-2.22V22c4.78-.75 8.44-4.91 8.44-9.93z"></path></svg>
+          Facebook
+        </a>
         <span>Windows PCs only</span>
         <span>© <span id="year">2026</span> The Repair Nerds</span>
       </div>
