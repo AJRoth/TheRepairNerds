@@ -36,7 +36,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preload" as="image" href="/assets/hero.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/hero-intro-poster.webp" type="image/webp" fetchpriority="high">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Repair Nerds">
@@ -864,89 +864,53 @@
 
     .hero-visual {
       position: relative;
-      min-height: 560px;
+      width: 100%;
+      min-height: 0;
     }
 
     .hero-frame {
-      position: absolute;
-      inset: 0;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, .16);
       border-radius: var(--radius-lg);
-      background: var(--surface);
+      background: #eef2f6;
       box-shadow: var(--shadow);
     }
 
-    .hero-frame::after {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, .78) 100%),
-        linear-gradient(120deg, rgba(74, 163, 255, .12), transparent 45%);
-      content: "";
-      pointer-events: none;
+    html[data-theme="light"] .hero-frame {
+      border-color: rgba(32, 28, 24, .14);
     }
 
-    .hero-frame picture,
+    .hero-intro,
+    .hero-intro-still {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #eef2f6;
+    }
+
+    .hero-intro,
+    .hero-intro-still img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #eef2f6;
+    }
+
+    .hero-intro-still {
+      display: none;
+    }
+
     .senior-image picture {
       display: block;
       width: 100%;
       height: 100%;
-    }
-
-    .hero-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(.82) contrast(1.04);
-    }
-
-    .visual-caption {
-      position: absolute;
-      z-index: 2;
-      right: 24px;
-      bottom: 24px;
-      left: 24px;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      color: #fff;
-    }
-
-    .visual-caption strong {
-      display: block;
-      font-size: 18px;
-      letter-spacing: -.02em;
-    }
-
-    .visual-caption span {
-      color: rgba(255, 255, 255, .72);
-      font-size: 13px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid rgba(255, 255, 255, .2);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, .42);
-      padding: 8px 11px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-
-    .status-pill::before {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 0 4px rgba(121, 211, 165, .12);
-      content: "";
     }
 
     .trust-bar {
@@ -1728,7 +1692,8 @@
       }
 
       .hero-visual {
-        min-height: 520px;
+        width: min(100%, 720px);
+        min-height: 0;
       }
 
       .pricing-grid {
@@ -1859,17 +1824,8 @@
       }
 
       .hero-visual {
-        min-height: 420px;
-      }
-
-      .visual-caption {
-        right: 18px;
-        bottom: 18px;
-        left: 18px;
-      }
-
-      .visual-caption .status-pill {
-        display: none;
+        width: 100%;
+        min-height: 0;
       }
 
       .trust-grid {
@@ -2021,6 +1977,14 @@
       ::view-transition-new(root) {
         animation-duration: .01ms !important;
       }
+
+      .hero-intro {
+        display: none;
+      }
+
+      .hero-frame .hero-intro-still {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -2124,18 +2088,56 @@
 
         <div class="hero-visual">
           <figure class="hero-frame">
-            <picture>
-              <source type="image/webp" srcset="/assets/hero.webp">
-              <img src="/assets/hero.jpg" alt="A remote support technician helping a customer from a modern computer workspace" width="800" height="1251" fetchpriority="high">
+            <video
+              id="hero-intro"
+              class="hero-intro"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="metadata"
+              poster="/assets/hero-intro-poster.webp"
+              width="1920"
+              height="1080"
+              aria-label="The Repair Nerds brand intro"
+            >
+              <source src="/assets/hero-intro.mp4" type="video/mp4">
+            </video>
+            <picture class="hero-intro-still">
+              <source media="(prefers-reduced-motion: reduce)" type="image/webp" srcset="/assets/hero-intro-poster.webp">
+              <source media="(prefers-reduced-motion: reduce)" type="image/jpeg" srcset="/assets/hero-intro-poster.jpg">
+              <img alt="The Repair Nerds brand intro" width="1920" height="1080" decoding="async">
             </picture>
-            <figcaption class="visual-caption">
-              <span>
-                <strong>Help from wherever you are.</strong>
-                <span>No packing up your PC. No waiting at a shop.</span>
-              </span>
-              <span class="status-pill">REMOTE READY</span>
-            </figcaption>
           </figure>
+          <script>
+            (function () {
+              var video = document.getElementById("hero-intro");
+              if (!video || !window.matchMedia) return;
+
+              var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+              function syncHeroIntro() {
+                if (motion.matches) {
+                  video.removeAttribute("autoplay");
+                  video.pause();
+                  return;
+                }
+
+                video.muted = true;
+                video.loop = true;
+                video.autoplay = true;
+                var pending = video.play();
+                if (pending && typeof pending.catch === "function") {
+                  pending.catch(function () {});
+                }
+              }
+
+              syncHeroIntro();
+              if (typeof motion.addEventListener === "function") {
+                motion.addEventListener("change", syncHeroIntro);
+              }
+            }());
+          </script>
         </div>
       </div>
     </section>
