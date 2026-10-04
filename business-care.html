@@ -203,7 +203,7 @@
             <p>We look at the tools you already use first. Only repeat work you already pay someone else to do can be on the list, and only if those tools can run it. If a test draft does not work in those tools, that task is not part of your setup. One-off design, ads, and anything that needs its own paid license are out of scope.</p>
             <p class="service-area"><strong>Based in Manheim, Pennsylvania.</strong> The task list and the monthly price are written down with that business before the monthly work starts.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="mailto:RemoteSupport@therepairnerds.com?subject=AI%20Business%20Care">Ask about AI Business Care</a>
+              <a class="button button-primary" href="#contact">Ask about AI Business Care</a>
               <a class="button button-secondary" href="sms:+17175356525">Text us</a>
             </div>
           </div>
@@ -304,7 +304,91 @@
         </div>
         <div class="hero-actions">
           <a class="button button-primary" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a>
-          <a class="button button-secondary" href="/#contact">Contact online</a>
+          <a class="button button-secondary" href="#contact">Contact online</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-shell">
+          <div class="contact-copy">
+            <p class="section-kicker">AI Business Care</p>
+            <h2>Ask about AI Business Care</h2>
+            <p>Send a short note about the repeat work you want on accounts your business owns. We’ll reply by email, phone, or text, whichever you prefer.</p>
+
+            <div class="contact-links">
+              <a class="contact-link" href="tel:+17175356525">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Call&nbsp;717&#8209;535&#8209;6525
+              </a>
+              <a class="contact-link" href="sms:+17175356525">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+                </svg>
+                Text&nbsp;717&#8209;535&#8209;6525
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="support-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="82736c3c-fae2-402a-844c-0c6801b5fb0f">
+            <input type="hidden" name="subject" value="New support request from therepairnerds.com">
+            <input type="hidden" name="from_name" value="The Repair Nerds Website">
+            <input class="form-honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="field-label-note" id="email-requirement">(required)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@email.com" required aria-describedby="contact-guidance">
+              </div>
+              <div class="field">
+                <label for="phone">Phone number <span class="field-label-note" id="phone-requirement">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="717-555-0123" aria-describedby="contact-guidance">
+              </div>
+              <div class="field">
+                <label for="contact-method">Preferred response</label>
+                <select id="contact-method" name="Preferred response" aria-describedby="contact-guidance">
+                  <option value="Email">Email</option>
+                  <option value="Call">Call</option>
+                  <option value="Text">Text</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="service">What do you need help with?</label>
+                <select id="service" name="Requested service">
+                  <option>Not sure — help me choose</option>
+                  <option>Basic Support — $39.99</option>
+                  <option>Tune-Up &amp; Cleanup — $79.99</option>
+                  <option>Tune-Up + Malware — $119.99</option>
+                  <option>Monthly PC Care Plan</option>
+                  <option selected>AI Business Care - Pricing flexible</option>
+                  <option>In-person help availability</option>
+                </select>
+              </div>
+              <p class="field-hint contact-guidance field-full" id="contact-guidance">We’ll use the email or phone number you provide, based on how you’d like us to respond. Email is required for an email reply. A phone number is required for Call or Text.</p>
+              <div class="field field-full">
+                <label for="message">What do you want to talk through?</label>
+                <textarea id="message" name="message" placeholder="Tell us about the repeat work you already pay someone else to do." required></textarea>
+              </div>
+            </div>
+
+            <button class="button button-primary form-submit" id="form-submit" type="submit">Send support request</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <div class="form-confirmation" id="form-confirmation">
+              <p class="form-confirmation-kicker">Request received</p>
+              <h3>Thanks for reaching out.</h3>
+              <p>We got your message. Someone from The Repair Nerds will contact you shortly.</p>
+              <p>If you need us sooner, call or text&nbsp;717&#8209;535&#8209;6525.</p>
+            </div>
+            <p class="form-note">Please do not include passwords, financial details, or other sensitive information.</p>
+          </form>
         </div>
       </div>
     </section>
