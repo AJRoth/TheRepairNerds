@@ -702,6 +702,11 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.steps-grid + .copy {
+  max-width: 760px;
+  margin-top: 28px;
+}
+
 .step-number {
   margin-bottom: 18px;
   color: var(--accent);
