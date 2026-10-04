@@ -1242,6 +1242,12 @@ h3 {
   .contact-copy h2 {
     font-size: clamp(2.1rem, 10vw, 2.8rem);
   }
+
+  .contact-form #service {
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
