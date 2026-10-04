@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CF8TW6FX0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0CF8TW6FX0');
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      var contactMethod = href.indexOf('tel:') === 0 ? 'phone' :
+        href.indexOf('sms:') === 0 ? 'text' :
+        href.indexOf('mailto:') === 0 ? 'email' : '';
+
+      if (contactMethod) {
+        gtag('event', 'contact_click', {
+          contact_method: contactMethod,
+          link_text: (link.textContent || '').trim()
+        });
+      }
+    });
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Business Care for a website you own: inbox sorting, follow-ups, appointment reminders, and inquiries in one place. You own the accounts, and you approve changes before they go live or get sent.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="The Repair Nerds">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://therepairnerds.com/business-care.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/service-pages.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Repair Nerds">
+  <meta property="og:title" content="Business Care | The Repair Nerds">
+  <meta property="og:description" content="A website your business owns, with inbox sorting, follow-ups, appointment reminders, and inquiries in one place. You own the accounts and approve every change first.">
+  <meta property="og:url" content="https://therepairnerds.com/business-care.html">
+  <meta property="og:image" content="https://therepairnerds.com/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Repair Nerds. You break it. We fix it.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Care | The Repair Nerds">
+  <meta name="twitter:description" content="Business Care for a website you own. You keep the accounts, and nothing goes live or gets sent until you approve it.">
+  <meta name="twitter:image" content="https://therepairnerds.com/social-preview.png">
+
+  <title>Business Care | The Repair Nerds</title>
+  <script>
+    try {
+      document.documentElement.setAttribute("data-theme", localStorage.getItem("repair-nerds-theme") === "light" ? "light" : "dark");
+    } catch (error) {}
+  </script>
+  <script src="/service-pages.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "Organization"],
+        "@id": "https://therepairnerds.com/#business",
+        "name": "The Repair Nerds",
+        "url": "https://therepairnerds.com/",
+        "logo": "https://therepairnerds.com/logo.png",
+        "telephone": "+1-717-535-6525",
+        "email": "RemoteSupport@therepairnerds.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Manheim",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        },
+        "areaServed": ["United States", "Lancaster County, Pennsylvania"]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://therepairnerds.com/business-care.html#service",
+        "name": "Business Care",
+        "serviceType": "Website care, inbox sorting, follow-ups, and appointment reminders",
+        "description": "Business Care starts with a website the business owns. One person sets up inbox sorting, follow-ups, appointment reminders, and a single place for new inquiries. The business owns the accounts. Website changes are shown with screenshots or a short screen recording before they go live, and with a preview link only when that host already provides one. Message drafts are shown before anything is sent.",
+        "url": "https://therepairnerds.com/business-care.html",
+        "provider": {"@id": "https://therepairnerds.com/#business"},
+        "areaServed": {"@type": "Country", "name": "United States"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://therepairnerds.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Business Care", "item": "https://therepairnerds.com/business-care.html"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who owns the website and the accounts?",
+            "acceptedAnswer": {"@type": "Answer", "text": "You do. The Repair Nerds person configures and maintains the work on the website and accounts the business owns."}
+          },
+          {
+            "@type": "Question",
+            "name": "What do I see before a website change goes live?",
+            "acceptedAnswer": {"@type": "Answer", "text": "You see screenshots or a short screen recording. A preview link is included only when your own host already provides one. Nothing goes live until you approve it."}
+          },
+          {
+            "@type": "Question",
+            "name": "What do I see before a follow-up, reminder, or sorted message is sent?",
+            "acceptedAnswer": {"@type": "Answer", "text": "You see the draft itself: the email or text that would be sent, or a short clip of the sort. Nothing is sent until you say yes."}
+          },
+          {
+            "@type": "Question",
+            "name": "What if the business needs something else?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Extra tasks are scoped with that business."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="The Repair Nerds home">
+        <span class="brand-mark"><img src="/logo.svg" alt="" width="256" height="256"></span>
+        <span class="brand-copy">
+          <span class="brand-name">The Repair Nerds</span>
+          <span class="brand-tag">You break it. We fix it.</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <details class="nav-dropdown">
+          <summary>Services <svg class="menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
+          <div class="nav-dropdown-panel">
+            <a href="/computer-tune-up.html"><span>Computer Tune-Up</span><small>Speed, cleanup, updates, and performance</small></a>
+            <a href="/virus-malware-removal.html"><span>Virus &amp; Malware Removal</span><small>Threat cleanup and security guidance</small></a>
+            <a href="/senior-computer-help.html"><span>Senior Computer Help</span><small>Patient, plain-English assistance</small></a>
+            <a href="/printer-email-help.html"><span>Printer &amp; Email Help</span><small>Everyday device and account support</small></a>
+            <a href="/business-care.html" aria-current="page"><span>Business Care</span><small>Sites, inboxes, and follow-ups you own</small></a>
+          </div>
+        </details>
+        <a href="/#plans">Care plans</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/about/">About us</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <details class="mobile-menu">
+          <summary aria-label="Open navigation menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><span class="mobile-menu-label">Menu</span></summary>
+          <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+            <a href="/">Home</a><span class="menu-section-label">Services</span>
+            <a class="menu-service-link" href="/computer-tune-up.html">Computer Tune-Up</a>
+            <a class="menu-service-link" href="/virus-malware-removal.html">Virus &amp; Malware Removal</a>
+            <a class="menu-service-link" href="/senior-computer-help.html">Senior Computer Help</a>
+            <a class="menu-service-link" href="/printer-email-help.html">Printer &amp; Email Help</a>
+            <a class="menu-service-link" href="/business-care.html" aria-current="page">Business Care</a>
+            <span class="menu-section-label">More</span><a href="/#plans">Care Plans</a><a href="/#how-it-works">How It Works</a><a href="/about/">About us</a><a href="/lancaster/">Lancaster, PA</a><a href="/#contact">Contact</a>
+            <a class="menu-call-link" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a>
+          </nav>
+        </details>
+        <a class="button button-primary" href="tel:+17175356525"><span class="nav-phone-label">Call&nbsp;</span>717&#8209;535&#8209;6525</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="service-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">Business Care</li>
+          </ol>
+        </nav>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Business Care</p>
+            <h1>A website your business owns.</h1>
+            <p class="lead">Business Care starts with a website the business owns. One person sets up the repetitive work and keeps it running: inbox sorting, follow-ups, appointment reminders, and new inquiries landing in one place instead of getting lost across email and texts.</p>
+            <p>You own the accounts. Before a website change goes live, you see screenshots or a short screen recording. A preview link is included only when your own host already provides one. For inbox sorting, follow-ups, and reminders, you see the draft itself: the email or text that would be sent, or a short clip of the sort. Nothing goes live or gets sent until you approve it.</p>
+            <p class="service-area"><strong>Based in Manheim, Pennsylvania.</strong> Business Care is arranged with that business, on the website and accounts the business owns.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:RemoteSupport@therepairnerds.com?subject=Business%20Care">Ask about Business Care</a>
+              <a class="button button-secondary" href="sms:+17175356525">Text us</a>
+            </div>
+          </div>
+          <aside class="summary-card" aria-label="Business Care overview">
+            <p class="summary-label">Business Care</p>
+            <p class="summary-price">Your site</p>
+            <p class="summary-duration">You own the accounts</p>
+            <ul class="plain-list">
+              <li>Screenshots or a short screen recording</li>
+              <li>A preview link only if your host has one</li>
+              <li>Drafts you approve before anything is sent</li>
+              <li>Extra tasks scoped with you</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <aside class="trust-strip" aria-label="Business Care promises">
+      <div class="container trust-grid">
+        <div class="trust-item"><strong>You own the accounts</strong><span>The Repair Nerds person configures and maintains them.</span></div>
+        <div class="trust-item"><strong>Shown before it is live</strong><span>Screenshots or a short screen recording. A preview link only when your host already has one.</span></div>
+        <div class="trust-item"><strong>Drafts before sending</strong><span>Nothing is sent until you say yes.</span></div>
+        <div class="trust-item"><strong>Scoped with you</strong><span>Extra tasks are scoped with that business.</span></div>
+      </div>
+    </aside>
+
+    <section class="section">
+      <div class="container content-grid">
+        <div class="copy">
+          <p class="section-kicker">What it covers</p>
+          <h2>The site you own, then the work around it.</h2>
+          <p>Business Care leads with a website the business owns. The examples around that site are inbox sorting, follow-ups, appointment reminders, and new inquiries landing in one place instead of getting lost across email and texts.</p>
+          <p>Extra tasks are scoped with that business.</p>
+        </div>
+        <div class="card-grid">
+          <article class="info-card"><h3>Inbox sorting</h3><p>Messages can be sorted so the ones that need a person are easier to find.</p></article>
+          <article class="info-card"><h3>Follow-ups</h3><p>A follow-up stays a draft until you have seen the email or text that would be sent.</p></article>
+          <article class="info-card"><h3>Appointment reminders</h3><p>Reminders are prepared for you to review. Nothing is sent until you say yes.</p></article>
+          <article class="info-card"><h3>Inquiries in one place</h3><p>New inquiries land in one place instead of getting lost across email and texts.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container content-grid">
+        <div class="check-panel">
+          <h3>Website changes</h3>
+          <ul class="check-list">
+            <li>You see screenshots or a short screen recording before a change goes live</li>
+            <li>A preview link is included only when your own host already provides one</li>
+            <li>Nothing goes live until you approve it</li>
+            <li>You own the website and the accounts</li>
+          </ul>
+        </div>
+        <div class="notice-panel">
+          <p class="section-kicker">Messages and reminders</p>
+          <h3>Inbox sorting, follow-ups, and reminders.</h3>
+          <p>You see the draft itself: the email or text that would be sent, or a short clip of the sort. Nothing is sent until you say yes.</p>
+          <p class="legal-note">The Repair Nerds person configures and maintains the work. You still approve it before it goes live or gets sent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-kicker">How it works</p>
+          <h2>Set up once, then review each change.</h2>
+        </header>
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">STEP 01</div><h3>Start with the site</h3><p>Tell us about the website the business owns, and about the inbox sorting, follow-ups, appointment reminders, or new inquiries around it.</p></article>
+          <article class="step-card"><div class="step-number">STEP 02</div><h3>Set it up on your accounts</h3><p>One person configures the repetitive work and keeps it running. You own the accounts.</p></article>
+          <article class="step-card"><div class="step-number">STEP 03</div><h3>Approve before it goes out</h3><p>Website changes are shown with screenshots or a short screen recording, and with a preview link only when your host already provides one. Message and reminder drafts wait for your yes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-kicker">Questions</p>
+          <h2>Business Care FAQ</h2>
+        </header>
+        <div class="faq-list">
+          <details><summary>Who owns the website and the accounts?</summary><p>You do. The Repair Nerds person configures and maintains the work on the website and accounts the business owns.</p></details>
+          <details><summary>What do I see before a website change goes live?</summary><p>You see screenshots or a short screen recording. A preview link is included only when your own host already provides one. Nothing goes live until you approve it.</p></details>
+          <details><summary>What do I see before a follow-up, reminder, or sorted message is sent?</summary><p>You see the draft itself: the email or text that would be sent, or a short clip of the sort. Nothing is sent until you say yes.</p></details>
+          <details><summary>What if the business needs something else?</summary><p>Extra tasks are scoped with that business.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cta-shell">
+        <div>
+          <p class="section-kicker">Ready to talk it through?</p>
+          <h2>Start with the website you own.</h2>
+          <p>Tell us about the site and the repeat work around it. We will confirm the scope with that business before any work begins.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="tel:+17175356525">Call&nbsp;717&#8209;535&#8209;6525</a>
+          <a class="button button-secondary" href="/#contact">Contact online</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-copy">
+        <strong>The Repair Nerds</strong>
+        <p>Based in Manheim, Pennsylvania, with remote Windows PC support available nationwide. Limited on-site help may be available in Manheim and nearby Lancaster County communities.</p>
+        <p class="legal-note">RemoteSupport@therepairnerds.com • © <span data-current-year>2026</span> The Repair Nerds</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="/about/">About us</a>
+        <a href="/lancaster/">Lancaster-area support</a>
+        <a href="/computer-tune-up.html">Computer tune-ups</a>
+        <a href="/virus-malware-removal.html">Virus &amp; malware removal</a>
+        <a href="/senior-computer-help.html">Senior computer help</a>
+        <a href="/printer-email-help.html">Printer &amp; email help</a>
+        <a href="/business-care.html" aria-current="page">Business Care</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/coin-pals-privacy.html">Coin Pals Privacy Policy</a>
+        <a class="footer-facebook" href="https://www.facebook.com/TheRepairNerds/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Repair Nerds on Facebook">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.4V9.84c0-2.38 1.42-3.69 3.6-3.69 1.04 0 2.13.19 2.13.19v2.34h-1.2c-1.18 0-1.55.74-1.55 1.49v1.79h2.64l-.42 2.91h-2.22V22c4.78-.75 8.44-4.91 8.44-9.93z"></path></svg>
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
